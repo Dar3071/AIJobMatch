@@ -1,60 +1,43 @@
-AIJobMatch
-This project builds a LAMP-based job recommendation platform, using AI to match job seekers with opportunities based on 
-skills and resumes. It’s a portfolio piece showcasing full-stack development, machine learning, and cloud skills. The 
-current implementation sets up a Laravel backend with MySQL, with plans for a Python AI model and AWS deployment. Future 
-enhancements include employer job postings, admin analytics, and real-time recommendations.
+# AIJobMatch
 
-Developed by: Deon Rennie
+## Project Overview
+AIJobMatch is a LAMP-based job recommendation platform that uses AI to match job seekers with opportunities based on their skills and resumes. It includes features for employers to post jobs and admins to view analytics, with deployment planned on AWS. This project showcases my skills in full-stack development, machine learning, and cloud technologies for my GitHub portfolio.
 
-Date: April 2025
+## Planned Features
+- Job seekers can register, create profiles with skills, experience, and resumes, receive AI-driven job recommendations, apply to jobs, and track applications.
+- Employers can post and manage job listings and review applicant profiles.
+- Admins can manage users, jobs, and applications, and view analytics like top skills and application trends.
+- AI recommends jobs using a Python-based model (scikit-learn) analyzing user skills and resume content.
+- Analytics dashboards display job posting trends for admins and applicant stats for employers using MySQL and JavaScript visualizations.
+- Cloud deployment on AWS using EC2 for the LAMP stack, RDS for MySQL, S3 for resumes, and Lambda for the AI API.
 
-Environment: Local macOS with VS Code, PHP 8.4.6, Laravel 12.8.1, MySQL
+## Tech Stack
+- Backend: PHP (Laravel), Python (Flask for AI).
+- Frontend: Tailwind CSS, JavaScript (planned).
+- Database: MySQL.
+- Cloud: AWS EC2, RDS, S3, Lambda (planned).
+- Tools: Git, Composer, pip, Homebrew.
 
-Detailed Overview: PROJECT.md
+## Progress
+- Completed Step 1: Defined requirements for job seekers, employers, admins, AI, and analytics. Planned architecture with Laravel for backend, MySQL for data, Python Flask for AI, and AWS for deployment. Created GitHub repo with initial README.
+- Partial Step 2: Set up development environment with Homebrew, installed MySQL and created `aijobmatch` database, installed Apache (verified at `http://localhost:8080`), installed PHP with MySQL support (`mysqli`, `pdo_mysql`) and extensions (`curl`, `gd`, `zip`), configured Apache for PHP, and tested MySQL connectivity with `mysql_test.php`. Resolved `php-mysql` Homebrew error by using modern PHP formula.
 
-Environment Setup
-Uses PHP 8.4.6, Laravel 12.8.1, and MySQL (installed via Homebrew on macOS).
+## Setup Instructions
+- Installed Homebrew for package management on macOS.
+- Installed LAMP stack:
+  - MySQL: `brew install mysql`, started service, secured installation, created `aijobmatch` database.
+  - Apache: `brew install httpd`, started service, verified at `http://localhost:8080`.
+  - PHP: `brew install php` (includes `mysqli` and `pdo_mysql` for MySQL support).
+  - Additional PHP extensions: `curl`, `gd`, `zip` (bundled or via `shivammathur/extensions` tap).
+- Configured Apache to process PHP files by updating `/opt/homebrew/etc/httpd/httpd.conf` with PHP module and `FilesMatch` directive, restarted Apache.
+- Tested PHP with `http://localhost:8080/test.php` (shows `phpinfo()`) and MySQL connectivity with `http://localhost:8080/mysql_test.php`.
+- Resolved `php-mysql` Homebrew error by using modern `php` formula with built-in MySQL extensions, verified with `php -m`.
 
-Install Homebrew: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)".
-Install MySQL: brew install mysql, start service, create aijobmatch database.
-Install Apache: brew install httpd, verify at http://localhost:8080.
-Install PHP: brew install php, includes mysqli, pdo_mysql.
-Install Composer: brew install composer.
-Install Laravel: composer create-project laravel/laravel . in ~/AIJobMatch.
-Configure .env: Set APP_KEY, DB_DATABASE=aijobmatch, DB_USERNAME=root.
-Run locally: php artisan serve (tests at http://localhost:8000).
-Apache Configuration
-Serves Laravel via Apache from ~/AIJobMatch/public.
+## Next Steps
+- Install Laravel to set up the PHP backend.
+- Set up Python 3.9 for the AI recommendation engine.
+- Initialize Git for version control and push updates to GitHub.
 
-Update /opt/homebrew/etc/httpd/httpd.conf:
-Set DocumentRoot "/Users/trillology/AIJobMatch/public".
-Set <Directory "/Users/trillology/AIJobMatch/public"> with AllowOverride All, Require all granted.
-Enable PHP: LoadModule php_module, <FilesMatch \.php$>.
-Set ServerName localhost.
-Fix permissions: chmod -R 755 ~/AIJobMatch.
-Restart Apache: brew services restart httpd.
-Verify: http://localhost:8080 shows Laravel’s welcome page.
-Current Progress
-LAMP stack is live, Laravel’s running, and Apache is configured.
-
-Set up Homebrew, MySQL (aijobmatch database), Apache, PHP.
-Tested PHP with http://localhost:8080/test.php (phpinfo) and mysql_test.php (DB connection).
-Installed Laravel, fixed subfolder issue, generated APP_KEY.
-Configured Apache, resolved httpd error 1, fixed DocumentRoot, .htaccess permissions, set ServerName.
-Next: Python 3.9 for AI, backend routes, AWS planning.
-Challenges Faced
-Hit some snags, crushed them all.
-
-Homebrew’s php-mysql error: Used brew install php for mysqli, pdo_mysql.
-Laravel subfolder mess: Moved files with mv laravel/* ..
-MissingAppKeyException: Ran php artisan key:generate.
-Apache httpd error 1: Fixed DocumentRoot, permissions, .htaccess issues.
-ServerName warning: Set ServerName localhost in httpd.conf.
-
-
-
-
-
-
-
-
+## Challenges & Solutions
+- Encountered Homebrew error: `No available formula with the name "php-mysql"`.
+- Resolved by installing `php` via `brew install php`, which includes `mysqli` and `pdo_mysql` by default, confirmed with `php -m | grep -E 'mysql|mysqli|pdo_mysql'`.
