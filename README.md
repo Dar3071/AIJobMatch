@@ -1,66 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+AIJobMatch
+This project builds a LAMP-based job recommendation platform, using AI to match job seekers with opportunities based on 
+skills and resumes. It’s a portfolio piece showcasing full-stack development, machine learning, and cloud skills. The 
+current implementation sets up a Laravel backend with MySQL, with plans for a Python AI model and AWS deployment. Future 
+enhancements include employer job postings, admin analytics, and real-time recommendations.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Developed by: Deon Rennie
 
-## About Laravel
+Date: April 2025
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Environment: Local macOS with VS Code, PHP 8.4.6, Laravel 12.8.1, MySQL
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Detailed Overview: PROJECT.md
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Environment Setup
+Uses PHP 8.4.6, Laravel 12.8.1, and MySQL (installed via Homebrew on macOS).
 
-## Learning Laravel
+Install Homebrew: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)".
+Install MySQL: brew install mysql, start service, create aijobmatch database.
+Install Apache: brew install httpd, verify at http://localhost:8080.
+Install PHP: brew install php, includes mysqli, pdo_mysql.
+Install Composer: brew install composer.
+Install Laravel: composer create-project laravel/laravel . in ~/AIJobMatch.
+Configure .env: Set APP_KEY, DB_DATABASE=aijobmatch, DB_USERNAME=root.
+Run locally: php artisan serve (tests at http://localhost:8000).
+Apache Configuration
+Serves Laravel via Apache from ~/AIJobMatch/public.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Update /opt/homebrew/etc/httpd/httpd.conf:
+Set DocumentRoot "/Users/trillology/AIJobMatch/public".
+Set <Directory "/Users/trillology/AIJobMatch/public"> with AllowOverride All, Require all granted.
+Enable PHP: LoadModule php_module, <FilesMatch \.php$>.
+Set ServerName localhost.
+Fix permissions: chmod -R 755 ~/AIJobMatch.
+Restart Apache: brew services restart httpd.
+Verify: http://localhost:8080 shows Laravel’s welcome page.
+Current Progress
+LAMP stack is live, Laravel’s running, and Apache is configured.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Set up Homebrew, MySQL (aijobmatch database), Apache, PHP.
+Tested PHP with http://localhost:8080/test.php (phpinfo) and mysql_test.php (DB connection).
+Installed Laravel, fixed subfolder issue, generated APP_KEY.
+Configured Apache, resolved httpd error 1, fixed DocumentRoot, .htaccess permissions, set ServerName.
+Next: Python 3.9 for AI, backend routes, AWS planning.
+Challenges Faced
+Hit some snags, crushed them all.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Homebrew’s php-mysql error: Used brew install php for mysqli, pdo_mysql.
+Laravel subfolder mess: Moved files with mv laravel/* ..
+MissingAppKeyException: Ran php artisan key:generate.
+Apache httpd error 1: Fixed DocumentRoot, permissions, .htaccess issues.
+ServerName warning: Set ServerName localhost in httpd.conf.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
