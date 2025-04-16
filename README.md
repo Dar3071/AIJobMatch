@@ -1,4 +1,4 @@
-AIJobMatch
+## AIJobMatch
 This project builds a LAMP-based job recommendation platform, using AI to match job seekers with opportunities based on 
 skills and resumes. It’s a portfolio piece showcasing full-stack development, machine learning, and cloud skills. The 
 current implementation sets up a Laravel backend with MySQL, with plans for a Python AI model and AWS deployment. Future 
@@ -10,9 +10,9 @@ Date: April 2025
 
 Environment: Local macOS with VS Code, PHP 8.4.6, Laravel 12.8.1, MySQL
 
-Detailed Overview: PROJECT.md
+## Detailed Overview: PROJECT.md
 
-Environment Setup
+## Environment Setup
 Uses PHP 8.4.6, Laravel 12.8.1, and MySQL (installed via Homebrew on macOS).
 
 Install Homebrew: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)".
