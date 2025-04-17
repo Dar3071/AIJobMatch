@@ -10,7 +10,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('job_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
+            $table->string('status');
             $table->timestamps();
         });
     }

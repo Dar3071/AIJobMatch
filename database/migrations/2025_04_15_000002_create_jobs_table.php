@@ -6,16 +6,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('resume')->nullable();
-            $table->text('bio')->nullable();
+            $table->string('title');
+            $table->string('company');
+            $table->text('description');
             $table->timestamps();
         });
     }
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('jobs');
     }
 };
