@@ -8,7 +8,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->enum('role', ['job_seeker', 'employer', 'admin'])->default('job_seeker');
+            $table->string('role')->default('job_seeker');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');

@@ -20,7 +20,7 @@ AIJobMatch is a LAMP-based job recommendation platform that uses AI to match job
 
 - Completed Step 2: Set up development environment with Homebrew. Installed MySQL and created aijobmatch database. Installed Apache, verified at http://localhost:8080. Installed PHP with MySQL support (mysqli, pdo_mysql) and extensions (curl, gd, zip). Configured Apache to process PHP, tested with http://localhost:8080/test.php and MySQL connectivity via mysql_test.php. Resolved php-mysql Homebrew error. Fixed Laravel subfolder issue by moving files. Resolved MissingAppKeyException by generating key. Configured Apache with DocumentRoot and <Directory> for Laravel’s public/ folder. Fixed httpd error 1 caused by incorrect DocumentRoot and .htaccess permissions. Suppressed ServerName warning. Resolved Git non-fast-forward error by force-pushing local changes. Installed Python 3.9 with pyenv, set up virtual environment, installed Flask, scikit-learn, and numpy for AI recommendations.
 
-- Completed Step 3: Designed MySQL schema with tables for users, profiles, skills, profile_skills, jobs, job_skills, applications, and analytics. Fixed missing users migration, resolved duplicate jobs migration, and fixed analytics table conflict by dropping existing table. Added missing applications table migration and verified Laravel’s default cache and cache_locks tables. Created Laravel migrations and seeders, applied to aijobmatch database, tested connectivity with sample data.
+- Completed Step 3: Designed MySQL schema with tables for users, profiles, skills, profile_skills, jobs, job_skills, applications, analytics, cache, cache_locks, migrations, and sessions. Fixed missing users migration, resolved duplicate jobs migration, fixed analytics table conflict, and added missing applications table migration. Fixed Skill model error in seeder by creating Skill model. Fixed persistent 404 error for /test-db by verifying Apache rewrite rules, permissions, and Laravel caches. Fixed MissingAppKeyException by generating APP_KEY in .env. Fixed SQLite database connection mismatch by correcting DB_CONNECTION to mysql. Fixed duplicate role column error by removing redundant migration. Fixed missing sessions table error by adding session migration. Fixed /test-db view to display user list by ensuring seeded data and correct view logic. Created Laravel migrations and seeders, applied to aijobmatch database, tested connectivity with sample data at http://localhost:8080/test-db.
 ## Setup Instructions
 - Installed Homebrew for package management on macOS.
 - Installed LAMP stack:
@@ -29,18 +29,36 @@ AIJobMatch is a LAMP-based job recommendation platform that uses AI to match job
 - PHP: brew install php, includes mysqli, pdo_mysql for MySQL support.
 - Additional PHP extensions: curl, gd, zip via Homebrew.
 - Installed Composer: brew install composer.
+- Configured Apache for PHP:
+- Updated /opt/homebrew/etc/httpd/httpd.conf with PHP module and FilesMatch directive.
+- Set DocumentRoot to /Users/trillology/AIJobMatch/public.
+- Set <Directory "/Users/trillology/AIJobMatch/public"> with AllowOverride All, Require all granted.
+- Set ServerName localhost.
+- Tested PHP: Created test.php for phpinfo() and mysql_test.php for database connectivity.
+- Installed Laravel: composer create-project laravel/laravel . in ~/AIJobMatch.
+- Fixed Laravel issues: Moved files from subfolder, ran php artisan key:generate for APP_KEY.
+- Set permissions: chmod -R 755 ~/AIJobMatch.
+- Restarted Apache: brew services restart httpd.
+- Verified Laravel: http://localhost:8080 shows welcome page.
+- Managed Git: Fixed push errors with git push --force to sync repo (github.com:Dar3071/AIJobMatch.git).
+- Installed Python 3.9:
+- Used brew install pyenv and pyenv install 3.9.20.
+- Set local version: pyenv local 3.9.20 in ~/AIJobMatch.
+- Created virtual environment: python -m venv venv.
+- Installed packages: pip install flask scikit-learn numpy.
+
 ## Configured Apache for PHP:
-Updated /opt/homebrew/etc/httpd/httpd.conf with PHP module and FilesMatch directive.
-Set DocumentRoot to /Users/trillology/AIJobMatch/public.
-Set <Directory "/Users/trillology/AIJobMatch/public"> with AllowOverride All, Require all granted.
-Set ServerName localhost.
-Tested PHP: Created test.php for phpinfo() and mysql_test.php for database connectivity.
-Installed Laravel: composer create-project laravel/laravel . in ~/AIJobMatch.
-Fixed Laravel issues: Moved files from subfolder, ran php artisan key:generate for APP_KEY.
-Set permissions: chmod -R 755 ~/AIJobMatch.
-Restarted Apache: brew services restart httpd.
-Verified Laravel: http://localhost:8080 shows welcome page.
-Managed Git: Fixed push errors with git push --force to sync repo (github.com:Dar3071/AIJobMatch.git).
+- Updated /opt/homebrew/etc/httpd/httpd.conf with PHP module and FilesMatch directive.
+- Set DocumentRoot to /Users/trillology/AIJobMatch/public.
+- Set <Directory "/Users/trillology/AIJobMatch/public"> with AllowOverride All, Require all granted.
+- Set ServerName localhost.
+- Tested PHP: Created test.php for phpinfo() and mysql_test.php for database connectivity.
+- Installed Laravel: composer create-project laravel/laravel . in ~/AIJobMatch.
+- Fixed Laravel issues: Moved files from subfolder, ran php artisan key:generate for APP_KEY.
+- Set permissions: chmod -R 755 ~/AIJobMatch.
+- Restarted Apache: brew services restart httpd.
+- Verified Laravel: http://localhost:8080 shows welcome page.
+- Managed Git: Fixed push errors with git push --force to sync repo (github.com:Dar3071/AIJobMatch.git).
 ## Installed Python 3.9:
 Used brew install pyenv and pyenv install 3.9.20.
 Set local version: pyenv local 3.9.20 in ~/AIJobMatch.
@@ -48,14 +66,21 @@ Created virtual environment: python -m venv venv.
 Installed packages: pip install flask scikit-learn numpy.
 
 ## Designed MySQL schema:
-Fixed missing users migration with php artisan make:migration create_users_table.
-Resolved duplicate jobs migration by dropping table and removing default migration.
-Fixed analytics table conflict by dropping existing table and using migrate:fresh.
-Added applications table migration to complete schema.
-Created migrations for profiles, skills, profile_skills, jobs, job_skills, applications, analytics.
-Ran php artisan migrate:fresh to apply schema, including Laravel’s cache and cache_locks.
-Added seeder for sample users and skills, ran php artisan migrate:fresh --seed.
-Tested at http://localhost:8080/test-db.
+- Fixed missing users migration with php artisan make:migration create_users_table.
+- Resolved duplicate jobs migration by dropping table and removing default migration.
+- Fixed analytics table conflict by dropping existing table and using migrate:fresh.
+- Added applications table migration to complete schema.
+- Created migrations for profiles, skills, profile_skills, jobs, job_skills, applications, analytics, sessions.
+- Ran php artisan migrate:fresh to apply schema, including Laravel’s cache, cache_locks, and sessions.
+- Fixed Skill model error by creating Skill model and updating seeder.
+- Fixed 404 error for /test-db by ensuring Apache mod_rewrite, correct permissions, and cleared caches.
+- Fixed MissingAppKeyException by generating APP_KEY in .env.
+- Fixed SQLite database connection mismatch by correcting DB_CONNECTION to mysql.
+- Fixed duplicate role column error by removing redundant migration.
+- Fixed missing sessions table error by adding php artisan session:table migration.
+- Fixed /test-db view to display user list by ensuring seeded data.
+- Added seeder for sample users and skills, ran php artisan migrate:fresh --seed.
+- Tested at http://localhost:8080/test-db.
 
 ## Challenges Faced
 - Homebrew error: “No php-mysql formula”. Resolved by installing php with mysqli, pdo_mysql.
@@ -67,5 +92,14 @@ Tested at http://localhost:8080/test-db.
 - Python setup: Configured pyenv to ensure Python 3.9 compatibility.
 - Missing users migration: Created new migration to restore users table schema.
 - Duplicate jobs migration: Removed default migration and dropped conflicting table.
-  analytics table conflict: Dropped existing table and used migrate:fresh.
+- analytics table conflict: Dropped existing table and used migrate:fresh.
 - Missing applications table: Added migration and reset schema to ensure all tables created.
+- 404 error for /test-db: Fixed by verifying routes/web.php, test_db.blade.php, clearing caches, and ensuring
+_ Apache mod_rewrite and permissions.
+- Skill model error: Created Skill model to fix seeder failure.
+- MissingAppKeyException for /test-db: Generated APP_KEY in .env, cleared caches.
+- /test-db only showing “Users”: Fixed by ensuring users table was seeded and view logic was correct.
+- SQLite connection error: Fixed by correcting DB_CONNECTION to mysql in .env.
+- Missing role column in users: Added role column via migration and re-seeded.
+- Duplicate role column error: Removed redundant add_role_to_users_table migration.
+- Missing sessions table error: Added sessions table migration with php artisan session:table.
