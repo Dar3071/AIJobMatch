@@ -6,17 +6,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->enum('role', ['job_seeker', 'employer', 'admin'])->default('job_seeker');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('resume')->nullable();
+            $table->text('bio')->nullable();
             $table->timestamps();
         });
     }
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('profiles');
     }
 };
