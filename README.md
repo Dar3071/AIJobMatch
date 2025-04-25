@@ -56,15 +56,15 @@ Screenshots
 
 
 
-Job Listings: View Screenshot
+Job Listings: !(screenshots/jobs_index.png)
 
 
 
-Create Job: View Screenshot
+Create Job: !(screenshots/jobs_create.png)
 
 
 
-Edit Job: View Screenshot
+Edit Job: !(screenshots/jobs_edit.png)
 
 Installation
 
