@@ -1,4 +1,4 @@
-## AIJobMatch
+# AIJobMatch
 
 AIJobMatch is a full-stack web application built to demonstrate proficiency in the LAMP stack (Linux/macOS, Apache, MySQL, PHP) and modern PHP development with Laravel. It features robust CRUD operations for managing job listings, showcasing skills in backend development, database management, and responsive front-end design.
 
@@ -54,17 +54,17 @@ AIJobMatch is a full-stack web application built to demonstrate proficiency in t
 
 
 
+### Job Listings: ![View Screenshot](screenshots/jobs_main.png)
 
-
-# Job Listings: ![View Screenshot](screenshots/jobs_create.png)
-
-
-
-# Create Job: ![View Screenshot](screenshots/jobs_create.png)
+### Job Listings: ![View Screenshot](screenshots/jobs_create.png)
 
 
 
-# Edit Job: ![View Screenshot](screenshots/jobs_create.png)
+### Create Job: ![View Screenshot](screenshots/jobs_create.png)
+
+
+
+### Edit Job: ![View Screenshot](screenshots/jobs_create.png)
 
 ## Installation
 
@@ -72,21 +72,21 @@ AIJobMatch is a full-stack web application built to demonstrate proficiency in t
 
 
 
-# Clone the repository:
+## Clone the repository:
 
 -git clone https://github.com/Dar3071/AIJobMatch.git
 -cd AIJobMatch
 
 
 
-# Install dependencies:
+## Install dependencies:
 
 -composer install
 -npm install
 
 
 
-# Configure environment:
+## Configure environment:
 
 -cp .env.example .env
 
