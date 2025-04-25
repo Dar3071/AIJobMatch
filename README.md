@@ -56,7 +56,7 @@ AIJobMatch is a full-stack web application built to demonstrate proficiency in t
 
 ### AIJobMatch Homepage: ![View Screenshot](screenshots/jobs_main.png)
 
-### Job Listings: ![View Screenshot](screenshots/jobs_create.png)
+### Job Listings: ![View Screenshot](screenshots/jobs_index.png)
 
 
 
@@ -64,7 +64,7 @@ AIJobMatch is a full-stack web application built to demonstrate proficiency in t
 
 
 
-### Edit Job: ![View Screenshot](screenshots/jobs_create.png)
+### Edit Job: ![View Screenshot](screenshots/jobs_edit.png)
 
 ## Installation
 
