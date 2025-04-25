@@ -56,7 +56,7 @@ Screenshots
 
 
 
-Job Listings: !(screenshots/jobs_index.png)
+Job Listings: (screenshots/jobs_index.png)
 
 
 
