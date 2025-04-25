@@ -1,8 +1,8 @@
-AIJobMatch
+## AIJobMatch
 
 AIJobMatch is a full-stack web application built to demonstrate proficiency in the LAMP stack (Linux/macOS, Apache, MySQL, PHP) and modern PHP development with Laravel. It features robust CRUD operations for managing job listings, showcasing skills in backend development, database management, and responsive front-end design.
 
--Features
+## Features
 
 
 
@@ -26,7 +26,7 @@ AIJobMatch is a full-stack web application built to demonstrate proficiency in t
 
 -Responsive UI: Clean, user-friendly interface with Vite-powered CSS and JavaScript.
 
-Tech Stack
+## Tech Stack
 
 
 
@@ -50,43 +50,43 @@ Tech Stack
 
 -Version Control: Git, GitHub
 
-Screenshots
+## Screenshots
 
 
 
 
 
-Job Listings: ![View Screenshot](screenshots/jobs_create.png)
+# Job Listings: ![View Screenshot](screenshots/jobs_create.png)
 
 
 
-Create Job: ![View Screenshot](screenshots/jobs_create.png)
+# Create Job: ![View Screenshot](screenshots/jobs_create.png)
 
 
 
-Edit Job: ![View Screenshot](screenshots/jobs_create.png)
+# Edit Job: ![View Screenshot](screenshots/jobs_create.png)
 
--Installation
-
-
+## Installation
 
 
 
-Clone the repository:
+
+
+# Clone the repository:
 
 -git clone https://github.com/Dar3071/AIJobMatch.git
 -cd AIJobMatch
 
 
 
-Install dependencies:
+# Install dependencies:
 
 -composer install
 -npm install
 
 
 
-Configure environment:
+# Configure environment:
 
 -cp .env.example .env
 
@@ -98,14 +98,14 @@ Configure environment:
 
 
 
-Run migrations and seed:
+## Run migrations and seed:
 
 -php artisan migrate
 -php artisan db:seed
 
 
 
-Start the server:
+## Start the server:
 
 -php artisan serve
 
@@ -113,7 +113,7 @@ Start the server:
 
 -Access at http://localhost:8000.
 
-Skills Demonstrated
+## Skills Demonstrated
 
 
 
