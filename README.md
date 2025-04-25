@@ -1,6 +1,7 @@
 ## AIJobMatch
-- AIJobMatch is a full-stack web application built to demonstrate proficiency in the LAMP stack (Linux/macOS, Apache, MySQL, PHP) and modern - PHP development with Laravel. 
-- It features robust CRUD operations for managing job listings, showcasing skills in backend development, database management, and responsive front-end design.
+    AIJobMatch is a full-stack web application built to demonstrate proficiency in the LAMP stack (Linux/macOS, Apache, MySQL, PHP) 
+and modern PHP development with Laravel. 
+    It features robust CRUD operations for managing job listings, showcasing skills in backend development, database management, and responsive front-end design.
 
 ## Features
 	-	CRUD Operations: Create, read, update, and delete job listings with validation and error handling.
